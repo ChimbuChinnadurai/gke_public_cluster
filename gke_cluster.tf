@@ -67,12 +67,10 @@ resource "google_container_cluster" "cluster" {
     identity_namespace = "${data.google_client_config.current.project}.svc.id.goog"
   }
 
-  //  TODO - GKE cluster issue post enabling master authorized network config
-  // https://github.com/terraform-providers/terraform-provider-google/issues/2198
   master_authorized_networks_config {
     cidr_blocks {
       cidr_block   = "0.0.0.0/0"
-      display_name = "jl-public"
+      display_name = "public"
     }
   }
 
